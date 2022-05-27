@@ -1,8 +1,20 @@
 spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/changelog-master.xml
+  batch:
+    jdbc:
+      initialize-schema: never
+    job:
+      enabled: false
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
-    password: password
-    driverClassName: org.h2.Driver
+    url: jdbc:mysql://127.0.0.1:3306/crawler
+    username: crawler_user
+    password: crawler_pass
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    com.avdemchenko.webcrawler: debug

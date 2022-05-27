@@ -1,0 +1,22 @@
+version: "3.4"
+networks:
+  localnet:
+volumes:
+  sftp-data:
+services:
+  mysql:
+    image: mysql:8.0.24
+    platform: linux/x86_64
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin"
+      MYSQL_DATABASE: "crawler"
+      MYSQL_USER: "crawler_user"
+      MYSQL_PASSWORD: "crawler_pass"
+    ports: ["3306:3306"]
+    networks: [localnet]
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      start_period: 1s
+      interval: 1s
+      timeout: 5s
+      retries: 99
