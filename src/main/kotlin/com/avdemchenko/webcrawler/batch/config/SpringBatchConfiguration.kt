@@ -19,10 +19,12 @@ class SpringBatchConfig(
 
     @Bean
     fun someJob(
-        initialize: Step
+        initialize: Step,
+        cleanup: Step
     ): Job =
-        jobs["gamingActivityReport"]
+        jobs["facebook"]
             .start(initialize)
+            .next(cleanup)
             .build()
 
     @Bean
@@ -30,6 +32,14 @@ class SpringBatchConfig(
     fun initialize(initializationTasklet: Tasklet) =
         steps["initialize"]
             .tasklet(initializationTasklet)
+            .allowStartIfComplete(true)
+            .build()
+
+    @Bean
+    @JobScope
+    fun cleanup(cleanupTasklet: Tasklet) =
+        steps["cleanup"]
+            .tasklet(cleanupTasklet)
             .allowStartIfComplete(true)
             .build()
 }

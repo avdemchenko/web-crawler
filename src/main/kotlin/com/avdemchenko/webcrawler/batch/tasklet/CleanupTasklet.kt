@@ -12,12 +12,11 @@ import org.springframework.stereotype.Component
 
 @StepScope
 @Component
-class InitializationTasklet(@Autowired val webDriver: WebDriver) : Tasklet {
+class CleanupTasklet(@Autowired val webDriver: WebDriver) : Tasklet {
 
     override fun execute(stepContribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
-        logger.debug { "test initialize" }
-
-        webDriver.navigate().to("https://www.google.com.ua/?hl=ru")
+        webDriver.close()
+        webDriver.quit()
         return RepeatStatus.FINISHED
     }
 
