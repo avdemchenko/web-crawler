@@ -20,10 +20,12 @@ class SpringBatchConfig(
     @Bean
     fun someJob(
         initialize: Step,
+        scrap: Step,
         cleanup: Step
     ): Job =
         jobs["facebook"]
             .start(initialize)
+            .next(scrap)
             .next(cleanup)
             .build()
 
@@ -32,6 +34,13 @@ class SpringBatchConfig(
     fun initialize(initializationTasklet: Tasklet) =
         steps["initialize"]
             .tasklet(initializationTasklet)
+            .allowStartIfComplete(true)
+            .build()
+    @Bean
+    @JobScope
+    fun scrap(scrapperTasklet: Tasklet) =
+        steps["scrapperTasklet"]
+            .tasklet(scrapperTasklet)
             .allowStartIfComplete(true)
             .build()
 

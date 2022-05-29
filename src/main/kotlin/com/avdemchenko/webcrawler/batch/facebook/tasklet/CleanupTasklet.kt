@@ -1,4 +1,4 @@
-package com.avdemchenko.webcrawler.batch.tasklet
+package com.avdemchenko.webcrawler.batch.facebook.tasklet
 
 import mu.KLogging
 import org.openqa.selenium.WebDriver
