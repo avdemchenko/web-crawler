@@ -15,6 +15,11 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+selenium:
+  browser: chrome
+  targets:
+    facebook: https://www.facebook.com
+
 logging:
   level:
     com.avdemchenko.webcrawler: debug
