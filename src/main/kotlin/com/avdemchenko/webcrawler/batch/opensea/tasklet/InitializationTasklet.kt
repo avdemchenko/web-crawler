@@ -14,7 +14,10 @@ import org.springframework.stereotype.Component
 class InitializationTasklet(val homeStepDefinition: HomeStepDefinition) : Tasklet {
 
     override fun execute(stepContribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
-        homeStepDefinition.navigateToHomePage()
+        homeStepDefinition.run {
+            navigateToHomePage()
+            goToRankings()
+        }
         return RepeatStatus.FINISHED
     }
 

@@ -23,7 +23,7 @@ class SpringBatchConfig(
         scrap: Step,
         cleanup: Step
     ): Job =
-        jobs["facebook"]
+        jobs["opensea"]
             .start(initialize)
             .next(scrap)
             .next(cleanup)
