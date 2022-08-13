@@ -9,5 +9,5 @@ import org.springframework.scheduling.annotation.EnableAsync
 class WebCrawlerApplication
 
 fun main(args: Array<String>) {
-	runApplication<WebCrawlerApplication>(*args)
+    runApplication<WebCrawlerApplication>(*args)
 }

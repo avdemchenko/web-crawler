@@ -18,5 +18,5 @@ class ScrapperTasklet(val homeStepDefinition: HomeStepDefinition) : Tasklet {
         return RepeatStatus.FINISHED
     }
 
-    companion object: KLogging()
+    companion object : KLogging()
 }

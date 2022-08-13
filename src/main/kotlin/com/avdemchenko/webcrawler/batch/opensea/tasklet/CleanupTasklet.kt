@@ -20,5 +20,5 @@ class CleanupTasklet(@Autowired val webDriver: WebDriver) : Tasklet {
         return RepeatStatus.FINISHED
     }
 
-    companion object: KLogging()
+    companion object : KLogging()
 }

@@ -1,9 +1,7 @@
 package com.avdemchenko.webcrawler.batch.opensea.tasklet
 
 import com.avdemchenko.webcrawler.batch.opensea.screenplay.home.HomeStepDefinition
-import com.avdemchenko.webcrawler.config.SeleniumProperties
 import mu.KLogging
-import org.openqa.selenium.WebDriver
 import org.springframework.batch.core.StepContribution
 import org.springframework.batch.core.configuration.annotation.StepScope
 import org.springframework.batch.core.scope.context.ChunkContext
@@ -20,5 +18,5 @@ class InitializationTasklet(val homeStepDefinition: HomeStepDefinition) : Taskle
         return RepeatStatus.FINISHED
     }
 
-    companion object: KLogging()
+    companion object : KLogging()
 }
