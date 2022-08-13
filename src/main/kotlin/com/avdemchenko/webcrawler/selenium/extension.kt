@@ -7,6 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLoca
 import org.openqa.selenium.support.ui.WebDriverWait
 import java.time.Duration
 
-fun WebDriver.waitUntilElementIsVisible(element: By): WebElement =
-    WebDriverWait(this, Duration.ofSeconds(30))
-        .until(visibilityOfElementLocated(element))
+fun WebDriver.waitUntilElementIsVisible(
+    element: By,
+    duration: Duration = Duration.ofSeconds(30)
+): WebElement =
+    WebDriverWait(this, duration).until(visibilityOfElementLocated(element))
