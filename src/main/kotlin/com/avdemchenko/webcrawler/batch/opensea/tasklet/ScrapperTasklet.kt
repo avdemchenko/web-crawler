@@ -1,6 +1,6 @@
-package com.avdemchenko.webcrawler.batch.facebook.tasklet
+package com.avdemchenko.webcrawler.batch.opensea.tasklet
 
-import com.avdemchenko.webcrawler.batch.facebook.screenplay.login.LoginStepDefinition
+import com.avdemchenko.webcrawler.batch.opensea.screenplay.home.HomeStepDefinition
 import mu.KLogging
 import org.springframework.batch.core.StepContribution
 import org.springframework.batch.core.configuration.annotation.StepScope
@@ -11,10 +11,10 @@ import org.springframework.stereotype.Component
 
 @StepScope
 @Component
-class ScrapperTasklet(val loginStepDefinition: LoginStepDefinition) : Tasklet {
+class ScrapperTasklet(val homeStepDefinition: HomeStepDefinition) : Tasklet {
 
     override fun execute(stepContribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
-        loginStepDefinition.performLogin()
+        homeStepDefinition.goToRankings()
         return RepeatStatus.FINISHED
     }
 
