@@ -1,6 +1,6 @@
 package com.avdemchenko.webcrawler.batch.opensea.tasklet
 
-import com.avdemchenko.webcrawler.batch.opensea.screenplay.home.HomeStepDefinition
+import com.avdemchenko.webcrawler.batch.opensea.screenplay.rankings.RankingsStepDefinition
 import mu.KLogging
 import org.springframework.batch.core.StepContribution
 import org.springframework.batch.core.configuration.annotation.StepScope
@@ -11,10 +11,12 @@ import org.springframework.stereotype.Component
 
 @StepScope
 @Component
-class ScrapperTasklet(val homeStepDefinition: HomeStepDefinition) : Tasklet {
+class ScrapperTasklet(val rankingsStepDefinition: RankingsStepDefinition) : Tasklet {
 
     override fun execute(stepContribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
-        homeStepDefinition.goToRankings()
+        rankingsStepDefinition.run {
+            items()
+        }
         return RepeatStatus.FINISHED
     }
 

@@ -1,22 +1,18 @@
 package com.avdemchenko.webcrawler.batch.opensea.screenplay.home
 
-import com.avdemchenko.webcrawler.config.SeleniumProperties
 import org.springframework.stereotype.Component
-import kotlin.reflect.full.NoSuchPropertyException
 
 @Component
-class HomeStepDefinition(
-    private val homeStep: HomeStep,
-    private val props: SeleniumProperties,
-) {
+class HomeStepDefinition(private val homePage: HomePage) {
 
     fun navigateToHomePage() {
-        val url = props.targets["opensea"] ?: throw NoSuchPropertyException()
-        homeStep.openHomePage(url)
-        homeStep.waitForPageToBeLoaded()
+        homePage.run {
+            open()
+            waitForPageToBeLoaded()
+        }
     }
 
     fun goToRankings() {
-        homeStep.openRankings()
+        homePage.goToRankings()
     }
 }
