@@ -14,9 +14,7 @@ import org.springframework.stereotype.Component
 class ScrapperTasklet(val rankingsStepDefinition: RankingsStepDefinition) : Tasklet {
 
     override fun execute(stepContribution: StepContribution, chunkContext: ChunkContext): RepeatStatus {
-        rankingsStepDefinition.run {
-            items()
-        }
+        rankingsStepDefinition.getRankingItems()
         return RepeatStatus.FINISHED
     }
 
